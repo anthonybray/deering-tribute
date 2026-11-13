@@ -96,8 +96,30 @@
   .chip{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-weight:400}
   .chip.hl{border-color:rgba(201,163,72,.5);color:var(--gold2)}
 
-  /* portraits placeholder */
-  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:44px}
+  /* identity section (face front) */
+  .identity{display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:clamp(28px,5vw,70px);align-items:center;padding:110px 0}
+  .identity.rev{grid-template-columns:1fr minmax(260px,420px)}
+  .portrait{position:relative}
+  .portrait img{display:block;width:100%;border-radius:4px;filter:saturate(.92) contrast(1.03);box-shadow:0 30px 80px rgba(0,0,0,.55)}
+  .portrait::after{content:"";position:absolute;inset:14px -14px -14px 14px;border:1px solid var(--line);border-radius:4px;pointer-events:none}
+  .portrait figcaption{margin-top:14px;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+  .portrait figcaption em{color:var(--gold);font-style:normal}
+  .identity .kicker{margin-bottom:12px}
+  .identity h2.sec-title{margin-bottom:18px}
+  .identity .lead{margin-bottom:20px}
+  .identity blockquote{margin:26px 0 0;padding:0 0 0 22px;border-left:2px solid var(--gold);font-family:var(--serif);font-style:italic;font-size:1.35rem;line-height:1.4;color:var(--gold2)}
+  .identity blockquote footer{margin-top:10px;font-family:var(--sans);font-style:normal;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--faint)}
+  @media(max-width:820px){
+    .identity,.identity.rev{grid-template-columns:1fr;gap:34px;padding:84px 0}
+  }
+
+  /* gallery (real photos + open slot) */
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;margin-top:44px}
+  .g-item{position:relative}
+  .g-item img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px;box-shadow:0 26px 60px rgba(0,0,0,.5)}
+  .g-item .cap{margin-top:12px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+  .g-item .cap b{color:var(--muted);font-weight:500}
+  .g-item .cap em{color:var(--gold);font-style:normal}
   .ph{aspect-ratio:4/5;border:1.5px dashed rgba(201,163,72,.4);border-radius:4px;display:flex;align-items:center;justify-content:center;
     text-align:center;padding:22px;color:var(--faint);font-size:13px;letter-spacing:.04em}
   .ph span em{color:var(--gold2);font-style:italic}
@@ -138,10 +160,25 @@
   <div class="scroll-cue">Scroll</div>
 </header>
 
-<!-- ============ OPENING ============ -->
-<section class="quote wrap">
-  <p class="rv">Few people move an industry by sheer force of belief. Christopher did &mdash; one console, one
-  launch, one million living rooms at a time.</p>
+<!-- ============ THE MAN ============ -->
+<section id="man">
+  <div class="wrap identity">
+    <figure class="portrait rv">
+      <img src="img/portrait-mobygames.jpg" alt="Portrait of Christopher Deering">
+      <figcaption>The man himself &mdash; <em>MobyGames profile archive</em></figcaption>
+    </figure>
+    <div class="identity-body rv d1">
+      <p class="kicker">The man himself</p>
+      <h2 class="sec-title">A face behind the <em>PlayStation</em> era.</h2>
+      <p class="lead">Christopher Deering is the American marketer and founder-CEO who built Sony&rsquo;s
+      games business in Europe from a standing start &mdash; launching the <b>PlayStation</b> across the region in
+      1995, and the <b>PlayStation 2</b> in 2000, formats that went on to become the best-selling consoles in history.</p>
+      <blockquote>
+        &ldquo;They were the best ten years of my life.&rdquo;
+        <footer>Christopher Deering, on leading Sony Computer Entertainment Europe</footer>
+      </blockquote>
+    </div>
+  </div>
 </section>
 
 <!-- ============ THE EPOCHS ============ -->
@@ -230,12 +267,18 @@
   <div class="wrap">
     <p class="kicker rv">Portraits &amp; memories</p>
     <h2 class="sec-title rv">The man, <em>in photographs</em>.</h2>
-    <p class="lead rv d1">This page is made to grow. Drop real photographs of Christopher into these frames &mdash;
-    a portrait, a launch night, a story worth keeping &mdash; and they will live here.</p>
+    <p class="lead rv d1">A life this large deserves its face. Here is Christopher, as the industry recorded
+    him &mdash; with room for the photographs only you have.</p>
     <div class="gallery">
-      <div class="ph rv"><span><em>Your portrait of Christopher</em> belongs here</span></div>
-      <div class="ph rv d1"><span><em>A launch night</em>, a conference, a handshake</span></div>
-      <div class="ph rv d2"><span><em>A memory</em> from the years that mattered</span></div>
+      <div class="g-item rv">
+        <img src="img/portrait-mobygames.jpg" alt="Christopher Deering, portrait" loading="lazy">
+        <p class="cap"><b>Christopher Deering</b><br><em>portrait &mdash; MobyGames archive</em></p>
+      </div>
+      <div class="g-item rv d1">
+        <img src="img/portrait-register-2006.jpg" alt="Christopher Deering, editorial portrait, 2006" loading="lazy">
+        <p class="cap"><b>2006 &mdash; the year he left Sony</b><br><em>editorial portrait &mdash; The Register</em></p>
+      </div>
+      <div class="ph rv d2"><span><em>Your photograph</em> of Christopher belongs here</span></div>
     </div>
   </div>
 </section>
@@ -246,9 +289,11 @@
     <p class="foot-name">Christopher Deering</p>
     <p class="foot-meta">An appreciation of a friend. Facts verified against <a href="https://en.wikipedia.org/wiki/Chris_Deering"
       target="_blank" rel="noopener">Chris Deering</a> on Wikipedia and contemporary press accounts of the gaming industry.</p>
-    <p class="foot-legal"><em>This site is a personal tribute and is not affiliated with, endorsed by, or connected to
-    Sony, PlayStation, Codemasters, or any company named here. Imagery is atmospheric and stylised &mdash; an abstract
-    celebration of the theme, not a depiction of any real person. Trademarks belong to their respective owners.</em></p>
+    <p class="foot-legal"><em>An appreciation of a friend &mdash; a personal tribute, not affiliated with, endorsed by, or
+    connected to Sony, PlayStation, Codemasters, or any company named here. Trademarks belong to their respective owners.
+    Photograph credits: portrait &copy; MobyGames profile archive; 2006 editorial portrait &copy; The Register &mdash;
+    used here in homage to a public figure of the games industry. A front-and-centre atmosphere section employs
+    stylised generative imagery.</em></p>
   </div>
 </footer>
 
